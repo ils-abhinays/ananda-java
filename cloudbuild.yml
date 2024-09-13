@@ -31,7 +31,10 @@ steps:
   - '--timeout'
   - '60'
   allow_failure: true
-
+  
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
 images:
 - ${_REPO_REGION}/${_PROJ_ID}/${_REPO_NAME}/${_SERVICE_NAME}
 
