@@ -40,7 +40,7 @@ images:
 
 substitutions:
   _REPO_REGION: asia-south1-docker.pkg.dev
-  _REPO_NAME: ananda-java-api-repo
+  _REPO_NAME: ananda-java-api-rep
   _SERVICE_NAME: ananda-java-api
   _REGION: asia-south1
   _PROJ_ID: gcp-training-710
