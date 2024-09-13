@@ -19,7 +19,7 @@ public class AuthController {
 	
 	@GetMapping("/test")
 	public String test(){
-		return "Test ananda App";
+		return "Test ananda App 222";
 	}
 	
 	@PostMapping("/user/login")
