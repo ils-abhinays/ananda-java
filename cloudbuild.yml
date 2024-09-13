@@ -1,0 +1,44 @@
+steps:
+
+- id: Docker build
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '${_REPO_REGION}/${_PROJ_ID}/${_REPO_NAME}/${_SERVICE_NAME}', '.']
+  
+- id: Container image push
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '${_REPO_REGION}/${_PROJ_ID}/${_REPO_NAME}/${_SERVICE_NAME}']
+
+- id: Cloud run deploy
+  name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - '${_SERVICE_NAME}'
+  - '--image'
+  - '${_REPO_REGION}/${_PROJ_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
+  - '--port'
+  - '8080'
+  - '--memory=1Gi'
+  - '--region'
+  - '${_REGION}'
+  - '--platform'
+  - 'managed'
+  - '--allow-unauthenticated'
+  # - '--service-account'
+  # - '${_SERVICE_ACCOUNT}'
+  - '--max-instances'
+  - '5'
+  - '--timeout'
+  - '60'
+  allow_failure: true
+
+images:
+- ${_REPO_REGION}/${_PROJ_ID}/${_REPO_NAME}/${_SERVICE_NAME}
+
+substitutions:
+  _REPO_REGION: asia-south1-docker.pkg.dev
+  _REPO_NAME: ananda-java-api-repo
+  _SERVICE_NAME: ananda-java-api
+  _REGION: asia-south1
+  _PROJ_ID: gcp-training-710
+  #_SERVICE_ACCOUNT: sa-ananda-resort-187-stg@ananda-resort-187.iam.gserviceaccount.com
