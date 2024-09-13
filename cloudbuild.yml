@@ -24,8 +24,8 @@ steps:
   - '--platform'
   - 'managed'
   - '--allow-unauthenticated'
-  # - '--service-account'
-  # - '${_SERVICE_ACCOUNT}'
+  - '--service-account'
+  - '${_SERVICE_ACCOUNT}'
   - '--max-instances'
   - '5'
   - '--timeout'
@@ -41,4 +41,4 @@ substitutions:
   _SERVICE_NAME: ananda-java-api
   _REGION: asia-south1
   _PROJ_ID: gcp-training-710
-  #_SERVICE_ACCOUNT: sa-ananda-resort-187-stg@ananda-resort-187.iam.gserviceaccount.com
+  _SERVICE_ACCOUNT: gcp-training-710@appspot.gserviceaccount.com
