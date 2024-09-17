@@ -1,6 +1,7 @@
 package com.ananda.AnandaJava.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +17,19 @@ public class AuthController {
 	
 	@Autowired
 	private AuthServices authServices;
+
+	@Value("${sm://greeting}")
+	String greeting;
+
+	@Value("${greeting}")
+	String greetings;
+
+	@Value("${test}")
+	String test;
 	
 	@GetMapping("/test")
 	public String test(){
-		return "Test ananda App 222";
+		return "Test ananda App 222  " + greeting + "  " + test;
 	}
 	
 	@PostMapping("/user/login")
