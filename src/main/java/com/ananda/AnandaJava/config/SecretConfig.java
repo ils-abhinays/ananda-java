@@ -4,6 +4,7 @@ import com.google.cloud.secretmanager.v1.SecretManagerServiceClient;
 import com.google.cloud.secretmanager.v1.SecretVersionName;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.google.api.client.util.Value;
 import com.google.cloud.secretmanager.v1.AccessSecretVersionResponse;
 //import com.ananda.AnandaJava.body.SecretBody;
 //import com.ananda.AnandaJava.model.Users;
@@ -17,6 +18,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SecretConfig {
+
+    @Value("${don}")
+	String don;
 	
     @Bean
     public SecretManagerServiceClient secretManagerServiceClient() throws Exception {
@@ -47,9 +51,11 @@ public class SecretConfig {
 		System.setProperty("DB_PASSWORD", jsonObject.get("DB_PASSWORD").getAsString());
 		System.setProperty("DB_NAME", jsonObject.get("DB_NAME").getAsString());
 		System.setProperty("JAVA_ENV", jsonObject.get("JAVA_ENV").getAsString());
-		System.setProperty("JWT_KEY", jsonObject.get("JWT_KEY").getAsString());
+		System.setProperty("jsonObject.get(\"JWT_KEY\").getAsString()", jsonObject.get("JWT_KEY").getAsString());
 
         System.out.println("secrets >> \n ==========================\n" + response.getPayload().getData().toStringUtf8());
+        System.out.println("jsonObject.get(\"DB_HOST\").getAsString() >> \n ==========================\n" + jsonObject.get("DB_HOST").getAsString());
+        System.out.println("don >> \n ==========================\n" + don);
 
         
         return response.getPayload().getData().toStringUtf8();
