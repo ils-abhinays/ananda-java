@@ -18,18 +18,9 @@ public class AuthController {
 	@Autowired
 	private AuthServices authServices;
 
-	@Value("${sm://greeting}")
-	String greeting;
-
-	@Value("${greeting}")
-	String greetings;
-
-	@Value("${test}")
-	String test;
-	
 	@GetMapping("/test")
 	public String test(){
-		return "Test ananda App 222  " + greeting + "  " + test;
+		 return "Test ananda App 222  ";
 	}
 	
 	@PostMapping("/user/login")

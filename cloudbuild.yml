@@ -30,6 +30,8 @@ steps:
   - '5'
   - '--timeout'
   - '60'
+  - '--set-env-vars'
+  - 'DON_NAME=devil-don'
   allow_failure: true
   
 options:
