@@ -32,6 +32,7 @@ steps:
   - '60'
   - '--set-env-vars'
   - 'DON_NAME=devil-don'
+  - 'MY_SPRING_VAR=${_MY_VARIABLE}'
   allow_failure: true
   
 options:
@@ -47,3 +48,4 @@ substitutions:
   _REGION: asia-south1
   _PROJ_ID: gcp-training-710
   _SERVICE_ACCOUNT: gcp-training-710@appspot.gserviceaccount.com
+  _MY_VARIABLE: devil-don

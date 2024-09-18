@@ -19,7 +19,10 @@ public class SecretConfig {
 	String greetings;
 
     @Value("${DON_NAME}")
-	String don;
+	private String don;
+
+    @Value("${MY_SPRING_VAR}")
+	private String msv;
 
     private String getSecret(SecretManagerServiceClient client, String secretId) throws Exception {
     	
@@ -27,7 +30,7 @@ public class SecretConfig {
         String projectId = "gcp-training-710"; // Your GCP project ID
         String versionId = "latest"; // Or a specific version
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + greetings + "  " + don);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + greetings + "  " + don + "  " + msv);
         SecretVersionName secretVersionName = SecretVersionName.of(projectId, secretId, versionId);
         AccessSecretVersionResponse response = client.accessSecretVersion(secretVersionName);
         return response.getPayload().getData().toStringUtf8();
