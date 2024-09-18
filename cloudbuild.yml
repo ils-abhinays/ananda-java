@@ -31,8 +31,7 @@ steps:
   - '--timeout'
   - '60'
   - '--set-env-vars'
-  - 'DON_NAME=devil-don'
-  - 'MY_SPRING_VAR=${_MY_VARIABLE}'
+  - 'MY_SPRING_VAR=devil-don'
   allow_failure: true
   
 options:
