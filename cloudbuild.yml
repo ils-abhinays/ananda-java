@@ -32,7 +32,6 @@ steps:
   - '60'
   - '--set-env-vars'
   - 'MY_SPRING_VAR=devil-don'
-    echo "My variable: ${_MY_VARIABLE}"
   allow_failure: true
   
 options:
