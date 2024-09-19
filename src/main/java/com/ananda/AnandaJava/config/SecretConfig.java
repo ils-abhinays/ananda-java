@@ -14,26 +14,20 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SecretConfig {
-	
-	@Value("${greeting}")
-	String greetings;
 
-    @Value("${xx}")
-	private String don;
+    @Value("${gcp.project.id}")
+    private String v1;
 
-    @Value("${MY_SPRING_VAR}")
-	private String msv;
-
-    @Value("${_MY_VARIABLE}")
-	private String msvun;
+    @Value("${secret.id}")
+    private String v2;
 
     private String getSecret(SecretManagerServiceClient client, String secretId) throws Exception {
-    	
+
+        System.out.println("v1 "+ v1 + "v2"+ v2);
     	
         String projectId = "gcp-training-710"; // Your GCP project ID
         String versionId = "latest"; // Or a specific version
 
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>" + greetings + " xx " + don + " msv " + msv + " " + msvun);
         SecretVersionName secretVersionName = SecretVersionName.of(projectId, secretId, versionId);
         AccessSecretVersionResponse response = client.accessSecretVersion(secretVersionName);
         return response.getPayload().getData().toStringUtf8();
@@ -41,13 +35,11 @@ public class SecretConfig {
 
     @Bean
     public SecretManagerServiceClient secretManagerServiceClient() throws Exception {
-    	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
         return SecretManagerServiceClient.create();
     }
 
     @Bean
     public DataSource dataSource(SecretManagerServiceClient client) throws Exception {
-    	System.out.println(">>>>>>>>>>>>>>>>>>>>>>>111");
         String secretBody = getSecret(client, "ananda-java-secret"); // Secret ID 
 
         Gson gson = new Gson();
