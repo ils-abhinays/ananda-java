@@ -44,7 +44,7 @@ substitutions:
   _REPO_REGION: asia-south1-docker.pkg.dev
   _REPO_NAME: ananda-java-api-rep
   _SERVICE_NAME: ananda-java-api
-  _REGION: asia-south1
+  _REGION: us-central1
   _PROJ_ID: gcp-training-710
   _SERVICE_ACCOUNT: gcp-training-710@appspot.gserviceaccount.com
   _MY_VARIABLE: devil-don
